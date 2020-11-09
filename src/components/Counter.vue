@@ -7,20 +7,20 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
     name: 'Counter',
-    data: () => (
-        {
-            counter: 0
-        }
-    ),
+    computed: {
+        ... mapState({
+            counter: state => state.counter
+        })
+    },
     methods: {
-        decrement: function() {
-            this.counter--;
-        },
-        increment: function(){
-            this.counter++;
-        }
+      ...mapMutations([
+          'decrement',
+          'increment'
+      ])
     }
 }
 </script>
